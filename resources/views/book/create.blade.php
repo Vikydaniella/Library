@@ -58,7 +58,8 @@
                         </h2>
                     </header>
 
-                    <form action="">
+                    <form action="/book" method='POST'>
+                    @csrf
                         <div class="mb-6">
                             <label
                                 for="title"
@@ -71,6 +72,9 @@
                                 name="title"
                             />
                         </div>
+                            @error('title')
+                            <p class='text-red-500 text-xs my-1'>{{$message}}</p>
+                            @enderror
 
                         <div class="mb-6">
                             <label for="author" class="inline-block text-lg mb-2"
@@ -127,7 +131,7 @@
                             <button
                                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                             >
-                                Create a Book
+                               <input type='submit' value='Create a Book'>
                             </button>
 
                             <a href="/" class="text-black ml-4"> Back </a>

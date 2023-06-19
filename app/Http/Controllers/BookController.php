@@ -21,7 +21,7 @@ class BookController extends Controller
         return view('book.create');
     }
 
-    public function store(Request $request, Book $registration){
+    public function store(Request $request, Book $book){
 
         $book = $request -> validate([
         'title'=>'required',
@@ -33,10 +33,10 @@ class BookController extends Controller
         $book['user_id']= auth()->id();
         
         Book::create($book);
-        Alert::success('Success', 'Application successful');
+        Alert::success('Success', 'Book Created successful');
         return redirect('/');
     }
-    public function review(){
+    public function edit(){
         return view('book.review');
     }
 

@@ -54,9 +54,9 @@
                 >
                     <header class="text-center">
                         <h2 class="text-2xl font-bold uppercase mb-1">
-                            Edit Gig
+                            Edit Books
                         </h2>
-                        <p class="mb-4">Edit: Senior Developer</p>
+                        <p class="mb-4">Edit: </p>
                     </header>
 
                     <form action="">
@@ -130,30 +130,6 @@
                         </div>
 
                         <div class="mb-6">
-                            <label for="tags" class="inline-block text-lg mb-2">
-                                Tags (Comma Separated)
-                            </label>
-                            <input
-                                type="text"
-                                class="border border-gray-200 rounded p-2 w-full"
-                                name="tags"
-                                placeholder="Example: Laravel, Backend, Postgres, etc"
-                                value="Laravel, Backend, Postgres"
-                            />
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="logo" class="inline-block text-lg mb-2">
-                                Company Logo
-                            </label>
-                            <input
-                                type="file"
-                                class="border border-gray-200 rounded p-2 w-full"
-                                name="logo"
-                            />
-                        </div>
-
-                        <div class="mb-6">
                             <label
                                 for="description"
                                 class="inline-block text-lg mb-2"
@@ -175,10 +151,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam quae repell
                             <button
                                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black text-lg"
                             >
-                                Create Gig
+                                Create a Book
                             </button>
 
-                            <a href="dashboard.html" class="text-black ml-4">
+                            <a href="/" class="text-black ml-4">
                                 Back
                             </a>
                         </div>
@@ -193,7 +169,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam quae repell
             <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
 
             <a
-                href="create.html"
+                href="/book/create"
                 class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
                 >Post Job</a
             >
