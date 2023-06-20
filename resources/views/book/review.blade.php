@@ -24,7 +24,7 @@
                 },
             };
         </script>
-        <title>LaraGigs | Find Laravel Jobs & Projects</title>
+        <title>Library | Edit Book</title>
     </head>
     <body class="mb-48">
         <nav class="flex justify-between items-center mb-4">
@@ -33,8 +33,8 @@
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
                 <li>
-                    <a href="manage.html" class="hover:text-laravel"
-                        ><i class="fa-solid fa-gear"></i> Manage Gigs</a
+                    <a href="/book/edit" class="hover:text-laravel"
+                        ><i class="fa-solid fa-gear"></i> Manage Books</a
                     >
                 </li>
                 <li>
@@ -54,109 +54,93 @@
                 >
                     <header class="text-center">
                         <h2 class="text-2xl font-bold uppercase mb-1">
-                            Edit Books
+                            Edit {{$book->title}}
                         </h2>
-                        <p class="mb-4">Edit: </p>
                     </header>
 
-                    <form action="">
+                    <form action="/book/{{$book->id}}/edit" method='POST' enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                         <div class="mb-6">
                             <label
-                                for="company"
+                                for="title"
                                 class="inline-block text-lg mb-2"
-                                >Company Name</label
-                            >
-                            <input
-                                type="text"
-                                class="border border-gray-200 rounded p-2 w-full"
-                                name="company"
-                                value="Acme Corp"
-                            />
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="title" class="inline-block text-lg mb-2"
-                                >Job Title</label
+                                >Title of Book</label
                             >
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="title"
-                                placeholder="Example: Senior Laravel Developer"
-                                value="Senior Laravel Developer"
+                                value="{{$book->title)}}"
+                            />
+                        </div>
+                            @error('title')
+                            <p class='text-red-500 text-xs my-1'>{{$message}}</p>
+                            @enderror
+
+                        <div class="mb-6">
+                            <label for="author" class="inline-block text-lg mb-2"
+                                >Author</label
+                            >
+                            <input
+                                type="text"
+                                class="border border-gray-200 rounded p-2 w-full"
+                                name="author"
+                                placeholder="Example: Wole Soyinka"
+                                value="{{$book->author)}}"
                             />
                         </div>
 
                         <div class="mb-6">
                             <label
-                                for="location"
+                                for="category"
                                 class="inline-block text-lg mb-2"
-                                >Job Location</label
+                                >book Category</label
                             >
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
-                                name="location"
-                                placeholder="Example: Remote, Boston MA, etc"
-                                value="Boston, MA"
+                                name="category"
+                                placeholder="Example: Fiction, Romance, etc"
+                                value="{{$book->category)}}"
                             />
                         </div>
 
                         <div class="mb-6">
-                            <label for="email" class="inline-block text-lg mb-2"
-                                >Contact Email</label
+                            <label for="year_of_publication" class="inline-block text-lg mb-2"
+                                >Year of Publication</label
                             >
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
-                                name="email"
-                                value="contact@acmecorp.com"
-                            />
-                        </div>
-
-                        <div class="mb-6">
-                            <label
-                                for="website"
-                                class="inline-block text-lg mb-2"
-                            >
-                                Website/Application URL
-                            </label>
-                            <input
-                                type="text"
-                                class="border border-gray-200 rounded p-2 w-full"
-                                name="website"
-                                value="https://acmecorp.com"
+                                name="year_of_publication"
+                                value="{{$book->year_of_publication)}}"
                             />
                         </div>
 
                         <div class="mb-6">
                             <label
-                                for="description"
+                                for="isbn"
                                 class="inline-block text-lg mb-2"
                             >
-                                Job Description
+                                ISBN
                             </label>
                             <textarea
                                 class="border border-gray-200 rounded p-2 w-full"
-                                name="description"
+                                name="isbn"
                                 rows="10"
-                                placeholder="Include tasks, requirements, salary, etc"
-                            >
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam quae repellat adipisci quas id? Optio saepe, maxime tempora tenetur iste ratione necessitatibus. Corrupti eveniet distinctio quaerat voluptas itaque sequi molestias assumenda fugiat minus in dicta perferendis, autem velit nihil, at, atque a placeat voluptates? Culpa quia vel laborum nemo.
-            </textarea
-                            >
+                                value="{{$book->isbn)}}"
+                            ></textarea>
                         </div>
 
                         <div class="mb-6">
                             <button
-                                class="bg-laravel text-white rounded py-2 px-4 hover:bg-black text-lg"
+                                class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                             >
-                                Create a Book
+                               <input type='submit' value='Create a Book'>
                             </button>
 
-                            <a href="/" class="text-black ml-4">
-                                Back
-                            </a>
+                            <a href="/" class="text-black ml-4"> Back </a>
                         </div>
                     </form>
                 </div>
@@ -166,12 +150,12 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam quae repell
         <footer
             class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center"
         >
-            <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
+            <p class="ml-2">Copyright Library; 2022, All Rights reserved</p>
 
             <a
-                href="/book/create"
+                href="/book"
                 class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
-                >Post Job</a
+                >Create a Book</a
             >
         </footer>
     </body>

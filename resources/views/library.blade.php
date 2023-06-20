@@ -45,4 +45,10 @@
             <p>No book found</p>
             @endunless
     </div>
+
+    <div class='mt-6 p-4">
+    {{$books-> links()}}
+    </div>
+
+
 @endsection

@@ -12,8 +12,16 @@ class BookController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+
+    public function index() {
+
+        $books = Book::paginate(2);
+        return view('library', compact('books'));
+
+    }
+    
         
-        public function show($id){
+    public function show($id){
         $book = Book::find($id);
         return view('book.show',['book'=>$book]);
     } 
@@ -36,8 +44,8 @@ class BookController extends Controller
         Alert::success('Success', 'Book Created successful');
         return redirect('/');
     }
-    public function edit(){
-        return view('book.review');
+    public function edit(Book $book){
+        return view('book.review', ['book'=>$book]);
     }
 
     public function delete(){

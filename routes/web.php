@@ -17,14 +17,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('library', ['books' => Book::all()]);
-});
-
-Route::get('/book/create', [BookController::class, 'create']);
-Route::post('/book',[BookController::class, 'store']);
-Route::get('/book/{id}',[BookController::class, 'show'])->middleware('auth');
-Route::patch('/book/edit',[BookController::class, 'edit'])->middleware('auth');
+Route::get('/', [BookController::class, 'index']);
+Route::get('/book/create', [BookController::class, 'create'])->middleware('auth');
+Route::post('/book',[BookController::class, 'store'])->middleware('auth');
+Route::get('/book/{id}',[BookController::class, 'show']);
+Route::put('/book/{$book}/edit',[BookController::class, 'edit'])->middleware('auth');
 Route::delete('/book/delete',[BookController::class, 'delete'])->middleware('auth');
 Route::get('/book',[UserController::class, 'create']);
 

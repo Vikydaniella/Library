@@ -58,8 +58,9 @@
                         </h2>
                     </header>
 
-                    <form action="/book" method='POST'>
+                    <form action="/book" method='POST' enctype="multipart/form-data">
                     @csrf
+
                         <div class="mb-6">
                             <label
                                 for="title"
@@ -70,6 +71,7 @@
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="title"
+                                value="{{old('title')}}"
                             />
                         </div>
                             @error('title')
@@ -83,8 +85,9 @@
                             <input
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
-                                name="Author"
+                                name="author"
                                 placeholder="Example: Wole Soyinka"
+                                value="{{old('author')}}"
                             />
                         </div>
 
@@ -99,6 +102,7 @@
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="category"
                                 placeholder="Example: Fiction, Romance, etc"
+                                value="{{old('category')}}"
                             />
                         </div>
 
@@ -110,6 +114,7 @@
                                 type="text"
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="year_of_publication"
+                                value="{{old('year_of_publication')}}"
                             />
                         </div>
 
@@ -124,6 +129,7 @@
                                 class="border border-gray-200 rounded p-2 w-full"
                                 name="isbn"
                                 rows="10"
+                                value="{{old('isbn')}}"
                             ></textarea>
                         </div>
 
